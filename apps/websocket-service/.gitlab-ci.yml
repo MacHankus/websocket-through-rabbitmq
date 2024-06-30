@@ -1,0 +1,64 @@
+"[websocket-svc] lint":
+  extends: .python-3.9-lint
+  variables:
+    APP: bpl-websocket-service
+  only:
+    changes:
+      - apps/bpl-websocket-service/**/*
+      - gitlab/python-3.9/lint/**/*
+  except:
+    refs:
+      - tags
+
+# "[websocket-svc] type-check":
+#   extends: .python-mypy
+#   variables:
+#     PROJECT_DIR: apps/bpl-websocket-service
+#   only:
+#     changes:
+#       - apps/bpl-websocket-service/**/*
+#       - gitlab/python-3.9/type-check/template.yml
+#   except:
+#     refs:
+#       - tags
+
+"[websocket-svc] build":
+  extends: .docker-build-push
+  variables:
+    APP: bpl-websocket-service
+  except:
+    refs:
+      - master
+      - tags
+  only:
+    changes:
+      - apps/bpl-websocket-service/**/*
+      - libs/**/*
+      - gitlab/docker/build/**/*
+
+"[websocket-svc] build & push":
+  extends: .docker-build-push
+  variables:
+    APP: bpl-websocket-service
+  only:
+    refs:
+      - master
+      - tags
+    changes:
+      - apps/bpl-websocket-service/**/*
+      - libs/**/*
+      - gitlab/docker/build/**/*
+
+"[websocket-svc] tests":
+  extends: .python-3.9-tests
+  variables:
+    APP: bpl-websocket-service
+  only:
+    changes:
+      - apps/bpl-websocket-service/**/*
+      - libs/**/*
+      - migrations/**/*
+      - gitlab/python-3.9/tests/**/*
+  except:
+    refs:
+      - tags

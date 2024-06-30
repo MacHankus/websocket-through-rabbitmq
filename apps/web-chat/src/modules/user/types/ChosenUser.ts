@@ -1,0 +1,3 @@
+type ChosenUser = {
+    username: string
+}

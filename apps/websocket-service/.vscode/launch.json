@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Tests",
+            "type": "python",
+            "request": "launch",
+            "module": "pytest",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args" : [
+                "-x",
+                "-vv",
+                // "-k TestShouldSendActionAft",
+                //  "tests/permissions/unit/refresh_permissions_publisher.py"
+            ],
+            "envFile": "${workspaceFolder}\\tests\\.env",
+            "env":{
+                "PYTHONPATH": "./src;./tests"
+            }
+        },
+        {
+            "name": "Service",
+            "type": "python",
+            "request": "launch",
+            "program": "src/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "envFile": "${workspaceFolder}\\.env",
+            "env":{
+
+            }
+        },
+    ]
+}

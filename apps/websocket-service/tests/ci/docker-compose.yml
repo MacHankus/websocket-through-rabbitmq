@@ -1,0 +1,18 @@
+version: '3.8'
+
+include:
+  - ../database.yml
+  - ../rabbitmq.yml
+
+services:
+  tests:
+    extends:
+      service: tests
+      file: ../python-3.9/tests/compose.yml
+    environment:
+      APP: websocket-service
+    depends_on:
+      db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
