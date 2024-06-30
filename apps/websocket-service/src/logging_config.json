@@ -1,0 +1,10 @@
+{
+  "logger": {
+    "path": "logs",
+    "filename": "logs.txt",
+    "level": "debug",
+    "rotation": "30 days",
+    "retention": "3 months",
+    "format": "<level>{level: <8}</level> <green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
+  }
+}
